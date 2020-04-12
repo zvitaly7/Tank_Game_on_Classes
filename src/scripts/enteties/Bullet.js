@@ -22,10 +22,10 @@ export class Bullet {
             250, 250,
             62, 62, require('../maps/explosion.json'));
         this.animations = animationSheet.getAnimation("explosion", 20, false);
-        this.sprites["left"] = images.getSprite(3);
-        this.sprites["right"] = images.getSprite(4);
-        this.sprites["down"] = images.getSprite(1);
-        this.sprites["up"] = images.getSprite(2);
+        this.sprites["left"] = images.getSprite(3, -100, -100);
+        this.sprites["right"] = images.getSprite(4, -100, -100);
+        this.sprites["down"] = images.getSprite(1, -100, -100);
+        this.sprites["up"] = images.getSprite(2, -100, -100);
         this.view = this.sprites[direction];
     }
 

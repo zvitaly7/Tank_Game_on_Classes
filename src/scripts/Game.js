@@ -21,32 +21,27 @@ export class Game {
             enter: '../src/img/Enter-Key.png'
         });
         this.control = new Control();
-        this.scenes = {
-            loading: new Loading(this),
-            menu: new Menu(this),
-            gameLevel: new GameLevel(this),
-            gameOver: new GameOver(this)
-        };
-        this.currentScene = this.scenes.loading;
+        this.currentScene = new Loading(this);
         this.currentScene.init();
     }
 
     changeScene(status) {
         switch (status) {
             case Scene.LOADED:
-                return this.scenes.menu;
+                return new Menu(this);
             case Scene.START_GAME:
-                return this.scenes.gameLevel;
+                return new GameLevel(this);
             case Scene.GAME_OVER:
-                return this.scenes.gameOver;
+                return new GameOver(this);
             default:
-                return this.scenes.menu;
+                return new Menu(this);
         }
     }
 
     frame(time) {
         if (this.currentScene.status !== Scene.WORKING) {
             this.currentScene = this.changeScene(this.currentScene.status);
+            this.control = new Control();
             this.currentScene.init();
         }
         this.currentScene.render(time);

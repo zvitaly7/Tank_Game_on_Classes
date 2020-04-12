@@ -22,8 +22,9 @@ export class SpriteFactory {
         );
     }
 
-    getSprite(index) {
-        return new Sprite(this.imageName, this.getSourceX(index), this.getSourceY(index), this.spriteWidth, this.spriteHeight);
+    getSprite(index, x = 0, y = 0) {
+        return new Sprite(this.imageName, this.getSourceX(index), this.getSourceY(index), this.spriteWidth,
+            this.spriteHeight, x, y);
     }
 
     getSourceX(index) {
